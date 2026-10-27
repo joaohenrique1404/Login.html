@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.:: Terminal de Acesso // CyberCore 2099 ::.</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <div class="cyber-container">
+        <div class="cyber-card">
+            
+            <div class="card-header">
+                <span class="sys-tag">SYS.STATUS // ONLINE</span>
+                <h1>Novo Registro</h1>
+            </div>
+
+            <form action="frontend.html" method="POST" onsubmit="return validarSenhas()">
+                
+                <div class="row">
+                    <div class="col">
+                        <label for="primeiro_nome"><span>◈</span> Primeiro Nome</label>
+                        <input id="primeiro_nome" name="primeiro_nome" type="text" placeholder="Ex: João" required>
+                    </div>
+
+                    <div class="col">
+                        <label for="segundo_nome"><span>◈</span> Segundo Nome</label>
+                        <input id="segundo_nome" name="segundo_nome" type="text" placeholder="Ex: Henrique" required>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <label for="email"><span>◈</span> E-mail</label>
+                    <input id="email" name="email" type="email" placeholder="usuario@email.com" required>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="senha"><span>◈</span> Senha</label>
+                        <input id="senha" name="senha" type="password" placeholder="••••••••" required oninput="verificarConfirmacao()">
+                    </div>
+
+                    <div class="col">
+                        <label for="confirmar_senha"><span>◈</span> Confirmar Senha</label>
+                        <input id="confirmar_senha" name="confirmar_senha" type="password" placeholder="••••••••" required oninput="verificarConfirmacao()">
+                    </div>
+                </div>
+
+                <div id="feedback" class="match-feedback"></div>
+
+                <button type="submit">Inicializar Acesso</button>
+
+                <div class="footer-terminal">
+                    <span>Já possui registro?</span>
+                    <a href="login.html">Conectar ao Sistema &gt;&gt;</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

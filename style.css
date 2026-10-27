@@ -1,0 +1,257 @@
+        :root {
+            --cyan: #00f3ff;
+            --neon-pink: #ff0055;
+            --neon-purple: #9d00ff;
+            --bg-dark: #070913;
+            --card-bg: rgba(11, 16, 33, 0.85);
+            --border-glow: rgba(0, 243, 255, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        /* Fundo escuro com grade cibernética e iluminação ambiente neon */
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 50% 20%, rgba(157, 0, 255, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 80% 80%, rgba(0, 243, 255, 0.12) 0%, transparent 50%),
+                linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            padding: 20px;
+            color: #ffffff;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Linha de escaneamento HUD holográfica sutil */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+            box-shadow: 0 0 15px var(--cyan);
+            animation: scan 6s linear infinite;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100vh; }
+        }
+
+        /* Container principal */
+        .cyber-container {
+            width: 100%;
+            max-width: 540px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Efeito de cantos cortados no estilo Sci-Fi HUD */
+        .cyber-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glow);
+            border-radius: 4px;
+            padding: 40px 35px;
+            box-shadow: 
+                0 0 25px rgba(0, 243, 255, 0.12),
+                inset 0 0 15px rgba(0, 243, 255, 0.05);
+            position: relative;
+            clip-path: polygon(
+                0 20px, 20px 0, 
+                calc(100% - 20px) 0, 100% 20px, 
+                100% calc(100% - 20px), calc(100% - 20px) 100%, 
+                20px 100%, 0 calc(100% - 20px)
+            );
+        }
+
+        /* Detalhes visuais nos cantos do painel */
+        .cyber-card::after {
+            content: "[ PROTOCOL_SECURE // 4096-BIT ]";
+            position: absolute;
+            bottom: 6px;
+            right: 25px;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.65rem;
+            color: rgba(0, 243, 255, 0.4);
+            letter-spacing: 1px;
+        }
+
+        /* Cabeçalho */
+        .card-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .sys-tag {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.75rem;
+            color: var(--cyan);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 6px;
+            text-shadow: 0 0 8px var(--cyan);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.85rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
+        }
+
+        /* Formulário */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .row {
+            display: flex;
+            gap: 14px;
+        }
+
+        .col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #b0c7ff;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        label span {
+            color: var(--cyan);
+            font-size: 0.75rem;
+        }
+
+        /* Inputs estilizados */
+        input {
+            width: 100%;
+            background: rgba(5, 10, 24, 0.8);
+            border: 1px solid rgba(0, 243, 255, 0.35);
+            border-radius: 4px;
+            padding: 12px 14px;
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            outline: none;
+            transition: all 0.25s ease-in-out;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.9rem;
+        }
+
+        /* Efeito de foco neon no input */
+        input:focus {
+            border-color: var(--cyan);
+            background: rgba(8, 16, 40, 0.95);
+            box-shadow: 
+                0 0 12px rgba(0, 243, 255, 0.4),
+                inset 0 0 8px rgba(0, 243, 255, 0.15);
+            transform: translateY(-1px);
+        }
+
+        /* Alerta de confirmação de senha */
+        .match-feedback {
+            font-size: 0.78rem;
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 4px;
+            min-height: 16px;
+            color: transparent;
+            transition: color 0.2s ease;
+        }
+
+        /* Botão Futurista com pulso e brilho */
+        button {
+            margin-top: 10px;
+            padding: 15px 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #070913;
+            background: linear-gradient(90deg, #00f3ff, #00b4d8);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            transition: all 0.2s ease-in-out;
+            overflow: hidden;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #ffffff, #00f3ff);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+            box-shadow: 0 0 10px var(--cyan);
+        }
+
+        /* Linha decorativa no rodapé */
+        .footer-terminal {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 14px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-terminal a {
+            color: var(--cyan);
+            text-decoration: none;
+            transition: text-shadow 0.2s;
+        }
+
+        .footer-terminal a:hover {
+            text-shadow: 0 0 8px var(--cyan);
+            text-decoration: underline;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 480px) {
+            .row {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .cyber-card {
+                padding: 30px 20px;
+            }
+        }
